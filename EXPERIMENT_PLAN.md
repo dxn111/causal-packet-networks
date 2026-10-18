@@ -36,7 +36,7 @@ Use a small open model or compact trained backbone. Implement the simplest compl
 
 Keep the same backbone and tokenizer in the serial baseline where feasible. Cache graph and packet representations only when the baseline receives equivalent cache accounting.
 
-First test synthetic graphs and controlled language tasks to validate scheduling and correctness. Label these as systems sanity checks, not language-model quality results.
+First run `python -m unittest discover -s tests -v` and test synthetic graphs and controlled language tasks to validate scheduling and correctness. The committed scheduler reports work, critical path, makespan, and ideal/simulated speedup. Label these as graph/runtime sanity checks, not language-model quality or measured hardware speed results.
 
 ## Phase 3 — End-to-end comparison
 
