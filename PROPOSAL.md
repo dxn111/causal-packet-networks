@@ -6,7 +6,7 @@
 
 Autoregressive language models produce text through a sequence of next-token decisions. Parallel decoding methods reduce the number of sequential steps, but fixed token blocks do not directly represent which parts of an answer depend on which other parts. We propose **Causal Packet Networks (CPN)**, a language-modeling approach in which a response is represented as a directed acyclic graph of variable-length semantic packets. Nodes represent pieces of meaning; edges represent information or ordering dependencies. A scheduler generates independent nodes concurrently, while delaying dependent nodes. A surface realizer turns the completed graph into text, and a selective repair mechanism revises only nodes implicated by a consistency failure.
 
-The central hypothesis is that variable-size, dependency-aware parallelism can reduce sequential decoding rounds while preserving or improving answer coherence. This is a proposal, not evidence that the method works or that its full combination is unprecedented. The work must establish novelty against prior research and evaluate total measured compute and latency, including planning, graph communication, realization, and repair.
+The central hypothesis is that a model can learn a variable-size packet graph that jointly reduces total executed work and the graph’s longest serial chain while preserving or improving answer quality. This differs from asking only whether chunks can be generated concurrently: concurrency may lower latency while increasing total FLOPs. The proposed objective must measure both. This remains a research hypothesis; close prior work overlaps with the broad mechanism, so novelty is unestablished and the exact contribution must be narrowed through direct comparison.
 
 ## 1. Motivation
 
@@ -117,4 +117,4 @@ A claim of “better output” requires a preselected quality metric or blinded 
 
 ## 10. Current status
 
-This document defines a research direction only. No CPN architecture has been implemented, trained, benchmarked, or shown to outperform a baseline.
+This document defines a research direction. A pure-Python DAG scheduling reference is implemented and unit-tested, but no neural CPN architecture has been implemented, trained, benchmarked, or shown to outperform a baseline.
