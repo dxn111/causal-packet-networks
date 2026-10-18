@@ -71,9 +71,19 @@ All hypotheses may fail. In particular, packetization might be noisy, dependenci
 
 ## 6. Novelty boundary and related work
 
-The broad ingredients have precedents: multi-token prediction, speculative decoding, diffusion-based parallel generation, hierarchical latent text generation, and structured planning. CPN should not claim novelty for “parallel generation,” “latent chunks,” or “global planning” alone.
+The first literature pass found close precedents that substantially overlap with the original broad CPN pitch:
 
-The intended research distinction to investigate is a learned, variable-length semantic packet graph whose dependency structure directly controls parallel scheduling, paired with subgraph-local repair. A literature review must search for prior systems with the same combination and refine or abandon this claim if close work exists. The proposal makes no priority or “first ever” claim.
+- [PASTA, described in Self-Orchestrating Language Models](https://arxiv.org/abs/2609.14850), trains a model to annotate independently generable output chunks and uses those annotations to parallelize autoregressive decoding. This directly overlaps with semantic chunks plus dependency-aware scheduling.
+- [DA-DLM](https://arxiv.org/abs/2609.15070) builds a position-oriented dependency DAG for parallel denoising in diffusion language models.
+- [DAPD](https://proceedings.mlr.press/v306/kim26t.html) induces a conditional dependency graph from attention and selects independent tokens for parallel updates in diffusion models.
+- [Graph-Structured Speculative Decoding](https://arxiv.org/abs/2407.16207) uses a DAG to organize and share drafted token hypotheses.
+- [CoDiLA](https://proceedings.mlr.press/v306/hersche26a.html) combines parallel generation with local autoregressive decoding for coherence.
+
+Therefore, the broad claim “represent an answer as dependent semantic chunks and generate independent chunks in parallel” is not a defensible novelty claim by itself. The name CPN does not make that mechanism new.
+
+A possible narrower contribution to investigate is a **learned variable-size semantic segmentation whose boundaries and dependency graph are optimized jointly for end-to-end measured cost, combined with a constraint-aware local repair procedure**. This is only a candidate distinction. It has not been established as novel, and additional search may find it already covered. The project should first reproduce and compare the closest methods. If the proposed difference is not substantial, frame the work as a reproduction/extension study or choose a different research question.
+
+The paper must include a method-by-method comparison of representation, training target, dependency inference, scheduling, repair, and measured cost. No “first ever” or “never done before” claim should be made without a comprehensive review.
 
 ## 7. Evaluation
 
