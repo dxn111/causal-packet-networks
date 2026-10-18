@@ -119,7 +119,7 @@ The starting model can be a small decoder-only Transformer. Keep the baseline an
 4. **Add the simplest packet prototype.** Start with sentence or clause packets and a basic dependency representation. Variable learned packetization can come after the pipeline works.
 5. **Add learned planning.** Train the model to produce packet boundaries and dependency links. Compare against hand-labeled or weakly labeled examples, and measure graph mistakes.
 6. **Add scheduling and repair.** Run independent packets together; measure whether checking and repair actually help and what they cost.
-7. **Optimize only after profiling.** Try PyTorch compilation or custom kernels only after measuring a real bottleneck.
+7. **Test the graph runtime.** Run `python -m unittest discover -s tests -v`. The included scheduler tests only verify DAG scheduling and critical-path calculations; they do not test an AI model or prove a speedup.\n8. **Optimize only after profiling.** Try PyTorch compilation or custom kernels only after measuring a real bottleneck.
 
 ## What to compare
 
@@ -152,7 +152,7 @@ It is completely possible that CPN misses the target or loses to existing method
 ## Repo contents
 
 - [PROPOSAL.md](PROPOSAL.md) — formal problem statement, hypotheses, objective, and limitations.
-- [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) — staged evaluation and reporting rules.
+- [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) — staged evaluation and reporting rules.\n- [research/scheduler.py](research/scheduler.py) — pure-Python reference list scheduler and work/span metrics.\n- [tests/test_scheduler.py](tests/test_scheduler.py) — dependency and scheduling sanity tests.
 
 ## Sources and implementation references
 
@@ -167,4 +167,4 @@ It is completely possible that CPN misses the target or loses to existing method
 
 ## Current status
 
-This README describes a research proposal and a path for testing it. No CPN model has been implemented or benchmarked. The overlap with PASTA and other dependency-aware parallel-decoding work is a major open issue for any novelty claim.
+This README describes a research proposal and a path for testing it. A small pure-Python DAG scheduler now exists and its six unit tests pass locally. It is only a graph-level sanity check: no CPN model has been implemented or benchmarked, and the overlap with PASTA and other dependency-aware parallel-decoding work remains a major open issue for any novelty claim.
