@@ -49,17 +49,17 @@ A first prototype can combine:
 
 A candidate objective is:
 
-\\[
-\\mathcal{L}=\\mathcal{L}_{\\text{text}}
-+\\lambda_s\\mathcal{L}_{\\text{sem}}
-+\\lambda_e\\mathcal{L}_{\\text{edge}}
-+\\lambda_c\\mathcal{L}_{\\text{consistency}}
-+\\lambda_w W(G)
-+\\lambda_d S(G)
-+\\lambda_r R(G).
-\\]
+\[
+\mathcal{L}=\mathcal{L}_{\text{text}}
++\lambda_s\mathcal{L}_{\text{sem}}
++\lambda_e\mathcal{L}_{\text{edge}}
++\lambda_c\mathcal{L}_{\text{consistency}}
++\lambda_w W(G)
++\lambda_d S(G)
++\lambda_r R(G).
+\]
 
-Here \\(W(G)\\) is total model work, \\(S(G)\\) is the weighted length of the longest dependency path, and \\(R(G)\\) is expected work spent on repair. End-to-end measurement must also count planner, scheduler, renderer, and communication overhead. Sweeping \\(\\lambda_w\\) and \\(\\lambda_d\\) gives a work-quality-latency frontier instead of hiding tradeoffs in one score. This is a proposed objective, not a finalized or validated training recipe.
+Here \(W(G)\) is total model work, \(S(G)\) is the weighted length of the longest dependency path, and \(R(G)\) is expected work spent on repair. End-to-end measurement must also count planner, scheduler, renderer, and communication overhead. Sweeping \(\lambda_w\) and \(\lambda_d\) gives a work-quality-latency frontier instead of hiding tradeoffs in one score. This is a proposed objective, not a finalized or validated training recipe.
 
 ## 5. Research hypotheses
 
