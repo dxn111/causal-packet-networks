@@ -42,9 +42,11 @@ First run `python -m unittest discover -s tests -v` and test synthetic graphs an
 
 Baselines:
 - ordinary autoregressive decoding;
-- multi-token or speculative decoding;
+- multi-token prediction and speculative decoding;
 - fixed-size block-parallel decoding;
-- CPN with full graph generation and repair.
+- PASTA-style semantic-chunk decoding where a faithful implementation or published configuration is available;
+- CPN with learned graph generation and repair;
+- CPN with oracle graphs, reported only as an upper bound.
 
 Run batch size 1 and a separate batched setting. Use identical hardware, precision, prompt set, output-length policy, sampling settings, and warm-up protocol.
 
