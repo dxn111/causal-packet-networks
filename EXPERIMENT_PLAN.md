@@ -4,7 +4,9 @@ This plan is written before experiments so that results can be compared fairly. 
 
 ## Phase 0 — Literature and specification
 
-- Review prior work on multi-token prediction, speculative decoding, diffusion language models, hierarchical latent generation, structured planning, and graph scheduling.
+- Compare directly against PASTA in Self-Orchestrating Language Models, DA-DLM, DAPD, Graph-Structured Speculative Decoding, CoDiLA, multi-token prediction, and fixed-block/speculative baselines.
+- Make a method table for each: representation, training objective, dependency source, scheduler, repair/verification, hardware, and claimed metrics.
+- Start with reproduction attempts or published-code comparisons for the closest methods before proposing novelty.
 - Build a related-work table stating each method's representation, source of parallelism, verification/repair strategy, reported metric, and difference from CPN.
 - Revise the novelty statement before making any “new” or “first” claim.
 - Specify packet schema, graph validity rules, renderer interface, and repair trigger.
