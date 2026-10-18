@@ -45,19 +45,21 @@ A first prototype can combine:
 - **Packet semantics:** a representation loss that keeps each packet sufficient to recover its assigned content.
 - **Dependency prediction:** predict required edges from training examples or weakly derived dependency labels.
 - **Consistency:** penalize contradictions between packet meanings and violations of graph constraints.
-- **Execution cost:** penalize measured or estimated serial rounds, expensive packet operations, and repair frequency.
+- **Execution cost:** penalize actual model work, critical-path length, and repair cost separately.
 
-A generic objective is:
+A candidate objective is:
 
-\[
-\mathcal{L}=\mathcal{L}_{\text{text}}
-+\lambda_s\mathcal{L}_{\text{sem}}
-+\lambda_e\mathcal{L}_{\text{edge}}
-+\lambda_c\mathcal{L}_{\text{consistency}}
-+\lambda_b\mathbb{E}[C(G)].
-\]
+\\[
+\\mathcal{L}=\\mathcal{L}_{\\text{text}}
++\\lambda_s\\mathcal{L}_{\\text{sem}}
++\\lambda_e\\mathcal{L}_{\\text{edge}}
++\\lambda_c\\mathcal{L}_{\\text{consistency}}
++\\lambda_w W(G)
++\\lambda_d S(G)
++\\lambda_r R(G).
+\\]
 
-Here \(C(G)\) should eventually include end-to-end measured cost, not only graph depth. The weights and exact parameterization are research choices to be justified experimentally; this equation is a scaffold, not a finalized method.
+Here \\(W(G)\\) is total model work, \\(S(G)\\) is the weighted length of the longest dependency path, and \\(R(G)\\) is expected work spent on repair. End-to-end measurement must also count planner, scheduler, renderer, and communication overhead. Sweeping \\(\\lambda_w\\) and \\(\\lambda_d\\) gives a work-quality-latency frontier instead of hiding tradeoffs in one score. This is a proposed objective, not a finalized or validated training recipe.
 
 ## 5. Research hypotheses
 
